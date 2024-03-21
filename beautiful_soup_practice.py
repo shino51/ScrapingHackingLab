@@ -8,7 +8,7 @@ import csv
 import re
 
 
-def fetch_on_this_day_from_wikipedia() :
+def fetch_on_this_day_from_wikipedia():
     url = "https://ja.wikipedia.org/"
     response = requests.get(url)
 
@@ -49,4 +49,4 @@ def fetch_hatena_top_articles() :
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    fetch_hatena_top_articles()
+    fetch_on_this_day_from_wikipedia()
