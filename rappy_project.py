@@ -1,8 +1,9 @@
-from reppy.robots import Robots
-import requests
-from bs4 import BeautifulSoup
 import urllib
 from urllib import parse
+
+import requests
+from bs4 import BeautifulSoup
+from reppy.robots import Robots
 
 
 def reppy_practice():

@@ -1,11 +1,12 @@
 # This is a sample Python script.
 
+import csv
+import re
+
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import requests
 from bs4 import BeautifulSoup
-import csv
-import re
 
 
 def fetch_on_this_day_from_wikipedia():
@@ -31,7 +32,7 @@ def fetch_on_this_day_from_wikipedia():
         writer.writerows(today_list)
 
 
-def fetch_hatena_top_articles() :
+def fetch_hatena_top_articles():
     url = "https://b.hatena.ne.jp/"
     response = requests.get(url)
     soup = BeautifulSoup(response.content, "html.parser")
