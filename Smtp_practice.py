@@ -1,13 +1,11 @@
 import configparser
 import smtplib
 from email.mime.text import MIMEText
+import requests
 
 
 def send_email():
-    # fetch config
-    config = configparser.RawConfigParser()
-    config.read("ConfigFile.properties")
-
+    config = get_config()
     # set up email details
     from_address = config.get("EmailSection", "from.email.address")
     to_address = config.get("EmailSection", "to.email.address")
@@ -28,5 +26,26 @@ def send_email():
     sender.quit()
 
 
+def notify_line():
+    config = get_config()
+
+    message = "Hello, Line. How are you doing?"
+    url = "https://notify-api.line.me/api/notify"
+    token = config.get("LineSection", "access.token")
+    headers = {"Authorization" : "Bearer " + token}
+    param = {"message" : message}
+
+    response = requests.post(url, headers=headers, params=param)
+    print(response)
+
+
+def get_config():
+    # fetch config
+    config = configparser.RawConfigParser()
+    config.read("ConfigFile.properties")
+    return config
+
+
 if __name__ == '__main__':
-    send_email()
+    # send_email()
+    notify_line()
