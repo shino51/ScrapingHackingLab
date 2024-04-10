@@ -2,6 +2,7 @@ import configparser
 import smtplib
 from email.mime.text import MIMEText
 import requests
+from notify_run import Notify
 
 
 def send_email():
@@ -26,7 +27,7 @@ def send_email():
     sender.quit()
 
 
-def notify_line():
+def send_notification_to_line():
     config = get_config()
 
     message = "Hello, Line. How are you doing?"
@@ -39,6 +40,12 @@ def notify_line():
     print(response)
 
 
+def send_notification_to_smartphone():
+    notify = Notify()
+    # print(notify.register())
+    notify.send("通知テスト。マジでいける？")
+
+
 def get_config():
     # fetch config
     config = configparser.RawConfigParser()
@@ -48,4 +55,5 @@ def get_config():
 
 if __name__ == '__main__':
     # send_email()
-    notify_line()
+    # send_notification_to_line()
+    send_notification_to_smartphone()
